@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: task-manager-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn project.wsgi:application --bind 0.0.0.0:$PORT
+    autoDeploy: true
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: task-manager-db
+          property: connectionString
+databases:
+  - name: task-manager-db
+    databaseName: taskmanagerapi
+    user: taskmanagerapi_user
