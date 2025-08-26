@@ -1,3 +1,17 @@
 Django>=4.2
 djangorestframework
 gunicorn
+
+drf-spectacular
+
+whitenoise
+
+python-dotenv
+
+dj-database-url
+psycopg2-binary
+django-cors-headers
+pre-commit
+black
+isort
+flake8
